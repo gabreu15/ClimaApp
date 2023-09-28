@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">ClimaApp</string>
+
+    <string name="cidade">Cidade</string>
+    <string name="atualizado">Atualizado:</string>
+    <string name="condicao_climatica">Condições climáticas</string>
+    <string name="temperatura">20°C</string>
+    <string name="minima">Mínima</string>
+    <string name="maxima">Máxima</string>
+
+    <string name="nascente">Nascente</string>
+    <string name="poente">Poente</string>
+    <string name="vento">Vento</string>
+    <string name="pressao">Pressão</string>
+    <string name="umidade">Umidade</string>
+
+    <string name="mudar_idioma">Mudar Idioma</string>
+    <string name="previsao_proximos_dias">Previsão para os próximos dias</string>
+
+    <string name="erro">Algo deu errado...</string>
+</resources>

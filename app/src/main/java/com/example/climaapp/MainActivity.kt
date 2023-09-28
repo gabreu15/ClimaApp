@@ -1,13 +1,18 @@
 package com.example.climaapp
 
+
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import org.json.JSONObject
 import java.lang.Exception
 import java.net.URL
@@ -15,18 +20,46 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+
+
 class MainActivity : AppCompatActivity() {
 
-    val CITY: String = "curitiba,br"
-    val API: String = "06c921750b9a82d8f5d1294e1586276f"
+    val city: String = "curitiba,br"
+    val api: String = "06c921750b9a82d8f5d1294e1586276f"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        fun setAppLocale(languageCode: String) {
+            val locale = Locale(languageCode)
+            val resources = resources
+            val configuration = resources.configuration
+            configuration.setLocale(locale)
+            resources.updateConfiguration(configuration, resources.displayMetrics)
+        }
+
+        // Obtenha o idioma salvo nas preferências
+        val savedLanguage = LanguageManager.getAppLanguage(this)
+
+        // Defina o idioma do aplicativo com base nas preferências
+        setAppLocale(savedLanguage)
+
+
         setContentView(R.layout.activity_main)
 
-        weatherTask().execute()
+        // Cria o botão para a mudança de idioma
+        val button: Button = findViewById(R.id.botaoMudarIdioma)
+        button.setOnClickListener{
+            val intent = Intent(this, LanguageActivity::class.java)
+            startActivity(intent)
+        }
+
+
+        // Iniciar a tarefa para buscar dados meteorológicos
+        WeatherTask().execute()
     }
-    inner class  weatherTask : AsyncTask<String, Void, String>()
+    inner class  WeatherTask : AsyncTask<String, Void, String>()
     {
         override fun onPreExecute() {
             super.onPreExecute()
@@ -35,19 +68,18 @@ class MainActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.errortext).visibility = View.GONE
         }
 
-        override fun doInBackground(vararg p0: String?): String? {
+        override fun doInBackground(vararg p0: String?): String?
+        {
             var response:String?
             try
             {
-                response = URL("https://api.openweathermap.org/data/2.5/weather?q=$CITY&units=metric&appid=$API")
-                    .readText(Charsets.UTF_8)
+                response = URL("https://api.openweathermap.org/data/2.5/weather?q=$city&units=metric&appid=$api").readText(Charsets.UTF_8)
             }
             catch (e: Exception)
             {
                 response = null
             }
             return response
-
         }
 
         override fun onPostExecute(result: String?) {
@@ -103,7 +135,10 @@ class MainActivity : AppCompatActivity() {
                     "10d" to R.drawable.d10,
                     "10n" to R.drawable.n10,
                     "11d" to R.drawable.d11,
-                    "11n" to R.drawable.n11
+                    "11n" to R.drawable.n11,
+                    "50d" to R.drawable.d50,
+                    "50n" to R.drawable.n50
+
                 )
 
                 val iconResourceID = weatherIcons[weatherIcon]
@@ -117,9 +152,23 @@ class MainActivity : AppCompatActivity() {
                 }
 
 
+                val recyclerView: RecyclerView = findViewById(R.id.recyclerviewForecast)
+                val items = ArrayList<Item>()
+                items.add(Item("15:00", "25°C", R.drawable.d01))
+                items.add(Item("16:00", "24°C", R.drawable.d02))
+                items.add(Item("17:00", "23°C", R.drawable.d03))
+                items.add(Item("18:00", "22°C", R.drawable.d01))
+                items.add(Item("19:00", "21°C", R.drawable.d01))
+
+
+                recyclerView.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+                recyclerView.adapter = MyAdapter(applicationContext, items)
+
+
+
                 findViewById<TextView>(R.id.address).text = address
                 findViewById<TextView>(R.id.updated_at).text = updateAtText
-                findViewById<TextView>(R.id.status).text = weatherDescription.capitalize()
+                findViewById<TextView>(R.id.status).text = weatherDescription.replaceFirstChar { it.uppercaseChar() }
                 findViewById<TextView>(R.id.temp).text = temperatureUnit
                 findViewById<TextView>(R.id.temp_min).text = temperatureMinUnit
                 findViewById<TextView>(R.id.temp_max).text = temperatureMaxUnit
@@ -129,11 +178,17 @@ class MainActivity : AppCompatActivity() {
                 findViewById<TextView>(R.id.pressure).text = pressure
                 findViewById<TextView>(R.id.humidity).text = humidity
 
+                //Barra de "loading"
                 findViewById<ProgressBar>(R.id.loader).visibility = View.GONE
                 findViewById<RelativeLayout>(R.id.mainContainer).visibility = View.VISIBLE
+
+
+
+
             }
             catch (e: Exception)
             {
+                //Barra de "loading"
                 findViewById<ProgressBar>(R.id.loader).visibility = View.GONE
                 findViewById<TextView>(R.id.errortext).visibility = View.VISIBLE
             }
