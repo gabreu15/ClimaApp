@@ -2,37 +2,47 @@ package com.example.climaapp;
 
 public class Item {
 
-    String time;
-    String temperature;
-    int image;
+    String date;
+    String maxTemp;
+    String minTemp;
+    String wind;
 
-    public Item(String time, String temperature, int image) {
-        this.time = time;
-        this.temperature = temperature;
-        this.image = image;
+    public Item(String date, String maxTemp, String minTemp, String wind) {
+        this.date = date;
+        this.maxTemp = maxTemp;
+        this.minTemp = minTemp;
+        this.wind = wind;
     }
 
-    public String getTime() {
-        return time;
+    public String getDate() {
+        return date;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getTemperature() {
-        return temperature;
+    public String getMaxTemp() {
+        return maxTemp;
     }
 
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
+    public void setMaxTemp(String maxTemp) {
+        this.maxTemp = maxTemp;
     }
 
-    public int getImage() {
-        return image;
+    public String getMinTemp() {
+        return minTemp;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setMinTemp(String minTemp) {
+        this.minTemp = minTemp;
+    }
+
+    public String getWind() {
+        return wind;
+    }
+
+    public void setWind(String wind) {
+        this.wind = wind;
     }
 }

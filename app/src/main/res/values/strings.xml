@@ -23,16 +23,16 @@
     <string name="aplicar">Apply</string>
 
 
-    <string name="clear_sky">Céu claro</string>
-    <string name="few_clouds">Algumas nuvens</string>
-    <string name="scattered_clouds">Parcialmente nublado</string>
-    <string name="broken_clouds">Predomina Nublado</string>
-    <string name="overcast_clouds">Nublado</string>
-    <string name="shower_rain">Chuva fraca</string>
-    <string name="rain">Chuva</string>
-    <string name="thunderstorm">Tempestade</string>
-    <string name="snow">Neve</string>
-    <string name="mist">Misto</string>
+    <string name="clear_sky">Open Sky</string>
+    <string name="few_clouds">Few clouds</string>
+    <string name="scattered_clouds">Partly cloudy</string>
+    <string name="broken_clouds">Lots of clouds</string>
+    <string name="overcast_clouds">Cloudy</string>
+    <string name="shower_rain">Easy rain</string>
+    <string name="rain">Rain</string>
+    <string name="thunderstorm">Storm</string>
+    <string name="snow">Snow</string>
+    <string name="mist">Mist</string>
     <string name="haze">Haze</string>
     <string name="dust">Dust</string>
 

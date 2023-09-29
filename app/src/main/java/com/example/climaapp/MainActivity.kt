@@ -1,6 +1,5 @@
 package com.example.climaapp
 
-
 import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
@@ -20,18 +19,18 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-
-
-class MainActivity : AppCompatActivity() {
-
+class MainActivity : AppCompatActivity()
+{
     val city: String = "curitiba,br"
     val api: String = "06c921750b9a82d8f5d1294e1586276f"
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
 
 
-        fun setAppLocale(languageCode: String) {
+        fun setAppLocale(languageCode: String)
+        {
             val locale = Locale(languageCode)
             val resources = resources
             val configuration = resources.configuration
@@ -45,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         // Defina o idioma do aplicativo com base nas preferências
         setAppLocale(savedLanguage)
 
-
         setContentView(R.layout.activity_main)
 
         // Cria o botão para a mudança de idioma
@@ -58,6 +56,9 @@ class MainActivity : AppCompatActivity() {
 
         // Iniciar a tarefa para buscar dados meteorológicos
         WeatherTask().execute()
+
+        // Iniciar a tarefa forecast
+        ForecastTask().execute()
     }
     inner class  WeatherTask : AsyncTask<String, Void, String>()
     {
@@ -82,9 +83,11 @@ class MainActivity : AppCompatActivity() {
             return response
         }
 
-        override fun onPostExecute(result: String?) {
+        override fun onPostExecute(result: String?)
+        {
             super.onPostExecute(result)
-            try {
+            try
+            {
                 val jsonObj = JSONObject(result)
                 val main  = jsonObj.getJSONObject("main")
                 val sys = jsonObj.getJSONObject("sys")
@@ -92,30 +95,21 @@ class MainActivity : AppCompatActivity() {
                 val weather = jsonObj.getJSONArray("weather").getJSONObject(0)
                 val updatedAt = jsonObj.getLong("dt")
                 val updatedAtTimestamp = updatedAt - (3 * 3600)
-
                 val updateAtText = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH).format(Date(updatedAtTimestamp*1000))
-
                 val temp = main.getString("temp")
                 val temperatureUnit = temp.substring(0, 2)+"°C"
-
                 val tempMin = main.getString("temp_min")
                 val temperatureMinUnit = tempMin.substring(0, 2)+"°C"
-
                 val tempMax = main.getString("temp_max")
                 val temperatureMaxUnit = tempMax.substring(0, 2)+"°C"
-
                 val pressure = main.getString("pressure")+" mb"
                 val humidity = main.getString("humidity")+"%"
-
                 val sunrise = sys.getLong("sunrise")
                 val sunriseTimestamp = sunrise - (3 * 3600)
-
                 val sunset = sys.getLong("sunset")
                 val sunsetTimestamp = sunset - (3 * 3600)
-
                 val windSpeed = wind.getString("speed")+" km/h"
                 val weatherDescription = weather.getString("description")
-
 
                 val translationMap = mapOf(
                     "clear sky" to "céu claro",
@@ -134,21 +128,20 @@ class MainActivity : AppCompatActivity() {
 
                 val translatedDescription = translationMap[weatherDescription]
 
-                if (translatedDescription != null) {
+                if (translatedDescription != null)
+                {
                     println("$translatedDescription")
-                } else {
+                }
+                else
+                {
                     println(weatherDescription)
                 }
 
-
-
                 val address = jsonObj.getString("name")+", "+sys.getString("country")
-
-
                 val weatherIcon = weather.getString("icon")
                 val imageView = findViewById<ImageView>(R.id.weatherIcon)
 
-                val weatherIcons = mapOf(
+                val weatherIcons = mapOf                (
                     "01d" to R.drawable.d01,
                     "01n" to R.drawable.n01,
                     "02d" to R.drawable.d02,
@@ -165,7 +158,6 @@ class MainActivity : AppCompatActivity() {
                     "11n" to R.drawable.n11,
                     "50d" to R.drawable.d50,
                     "50n" to R.drawable.n50
-
                 )
 
                 val iconResourceID = weatherIcons[weatherIcon]
@@ -177,21 +169,6 @@ class MainActivity : AppCompatActivity() {
                     // Caso não haja um ícone correspondente, você pode definir uma imagem padrão ou tratar de outra forma
                     imageView.setImageResource(R.drawable.not_available)
                 }
-
-
-                val recyclerView: RecyclerView = findViewById(R.id.recyclerviewForecast)
-                val items = ArrayList<Item>()
-                items.add(Item("15:00", "25°C", R.drawable.d01))
-                items.add(Item("16:00", "24°C", R.drawable.d02))
-                items.add(Item("17:00", "23°C", R.drawable.d03))
-                items.add(Item("18:00", "22°C", R.drawable.d01))
-                items.add(Item("19:00", "21°C", R.drawable.d01))
-
-
-                recyclerView.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-                recyclerView.adapter = MyAdapter(applicationContext, items)
-
-
 
                 findViewById<TextView>(R.id.address).text = address
                 findViewById<TextView>(R.id.updated_at).text = updateAtText
@@ -209,15 +186,88 @@ class MainActivity : AppCompatActivity() {
                 findViewById<ProgressBar>(R.id.loader).visibility = View.GONE
                 findViewById<RelativeLayout>(R.id.mainContainer).visibility = View.VISIBLE
 
-
-
-
             }
             catch (e: Exception)
             {
                 //Barra de "loading"
                 findViewById<ProgressBar>(R.id.loader).visibility = View.GONE
                 findViewById<TextView>(R.id.errortext).visibility = View.VISIBLE
+            }
+        }
+    }
+    inner class  ForecastTask : AsyncTask<String, Void, String>()
+    {
+        override fun onPreExecute() {
+            super.onPreExecute()
+            findViewById<ProgressBar>(R.id.loader).visibility = View.VISIBLE
+            findViewById<RelativeLayout>(R.id.mainContainer).visibility = View.GONE
+            findViewById<TextView>(R.id.errortext).visibility = View.GONE
+        }
+
+        override fun doInBackground(vararg p0: String?): String?
+        {
+            var response:String?
+            try
+            {
+                response = URL("https://api.open-meteo.com/v1/forecast?latitude=-25.4278&longitude=-49.2731&daily=temperature_2m_max,temperature_2m_min,windspeed_10m_max&timezone=America%2FSao_Paulo").readText(Charsets.UTF_8)
+            }
+            catch (e: Exception)
+            {
+                response = null
+            }
+            return response
+        }
+
+        override fun onPostExecute(result: String?) {
+            super.onPostExecute(result)
+            try {
+                val jsonObj = JSONObject(result)
+                val dates = jsonObj.getJSONObject("daily").getJSONArray("time")
+                val maxTemperatures = jsonObj.getJSONObject("daily").getJSONArray("temperature_2m_max")
+                val minTemperatures = jsonObj.getJSONObject("daily").getJSONArray("temperature_2m_min")
+                val windSpeeds = jsonObj.getJSONObject("daily").getJSONArray("windspeed_10m_max")
+
+                val recyclerView: RecyclerView = findViewById(R.id.recyclerviewForecast)
+                val items = ArrayList<Item>()
+
+                val imageView = findViewById<ImageView>(R.id.weatherIcon)
+                val weatherIcons = mapOf(
+                        "01d" to R.drawable.d01,
+                "01n" to R.drawable.n01,
+                "02d" to R.drawable.d02,
+                "02n" to R.drawable.n02,
+                "03d" to R.drawable.d03,
+                "03n" to R.drawable.n03,
+                "04d" to R.drawable.d04,
+                "04n" to R.drawable.n04,
+                "09d" to R.drawable.d09,
+                "09n" to R.drawable.n09,
+                "10d" to R.drawable.d10,
+                "10n" to R.drawable.n10,
+                "11d" to R.drawable.d11,
+                "11n" to R.drawable.n11,
+                "50d" to R.drawable.d50,
+                "50n" to R.drawable.n50
+                )
+
+                // Loop through the data and create items for each day
+                for (i in 0 until dates.length()) {
+                    val date = dates.getString(i)
+                    val maxTemp = maxTemperatures.getDouble(i).toString() + "°C"
+                    val minTemp = minTemperatures.getDouble(i).toString() + "°C"
+                    val wind = windSpeeds.getDouble(i).toString() + " km/h"
+
+                    // You can customize the layout of each card as needed
+                    items.add(Item(date, "Max Temp: $maxTemp\n","Min Temp: $minTemp\n","Wind Speed: $wind"))
+                }
+
+                recyclerView.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+                recyclerView.adapter = MyAdapter(applicationContext, items)
+
+                // Rest of your code...
+
+            } catch (e: Exception) {
+                // Handle any exceptions here...
             }
         }
     }

@@ -27,10 +27,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.timeView.setText(items.get(position).getTime());
-        holder.temperatureView.setText(items.get(position).getTemperature());
-        holder.imageView.setImageResource(items.get(position).getImage());
-
+        holder.dateView.setText(items.get(position).getDate());
+        holder.maxTempView.setText(items.get(position).getMaxTemp());
+        holder.minTempView.setText(items.get(position).getMinTemp());
+        holder.windView.setText(items.get(position).getWind());
     }
 
     @Override
