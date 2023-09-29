@@ -28,17 +28,17 @@ public class LanguageActivity extends AppCompatActivity {
                 int selectedId = languageRadioGroup.getCheckedRadioButtonId();
                 RadioButton radioButton = findViewById(selectedId);
 
-                if (radioButton != null) {
+                if (radioButton != null && radioButton.getTag() != null) {
                     String languageCode = radioButton.getTag().toString();
                     LanguageManager.setAppLanguage(LanguageActivity.this, languageCode);
 
-                    // Reinicie a atividade atual para aplicar as configurações de idioma
-                    Intent intent = getIntent();
-                    finish();
+                    // Restart the MainActivity
+                    Intent intent = new Intent(LanguageActivity.this, MainActivity.class);
                     startActivity(intent);
+                    finish(); // Finish the LanguageActivity
+
                 }
             }
         });
-
     }
 }

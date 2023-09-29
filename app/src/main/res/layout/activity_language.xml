@@ -28,13 +28,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="English"
-            android:checked="true" />
+            android:tag="en" />
 
         <RadioButton
             android:id="@+id/radioPortuguese"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Português" />
+            android:text="Português"
+            android:tag="pt" />
 
 
     </RadioGroup>
