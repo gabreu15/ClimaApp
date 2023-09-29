@@ -93,16 +93,16 @@ class MainActivity : AppCompatActivity() {
                 val updatedAt = jsonObj.getLong("dt")
                 val updatedAtTimestamp = updatedAt - (3 * 3600)
 
-                val updateAtText = "Atualizado em: "+SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH).format(Date(updatedAtTimestamp*1000))
+                val updateAtText = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH).format(Date(updatedAtTimestamp*1000))
 
                 val temp = main.getString("temp")
                 val temperatureUnit = temp.substring(0, 2)+"°C"
 
                 val tempMin = main.getString("temp_min")
-                val temperatureMinUnit = "Mínima: "+tempMin.substring(0, 2)+"°C"
+                val temperatureMinUnit = tempMin.substring(0, 2)+"°C"
 
                 val tempMax = main.getString("temp_max")
-                val temperatureMaxUnit = "Máxima: "+tempMax.substring(0, 2)+"°C"
+                val temperatureMaxUnit = tempMax.substring(0, 2)+"°C"
 
                 val pressure = main.getString("pressure")+" mb"
                 val humidity = main.getString("humidity")+"%"
@@ -115,6 +115,33 @@ class MainActivity : AppCompatActivity() {
 
                 val windSpeed = wind.getString("speed")+" km/h"
                 val weatherDescription = weather.getString("description")
+
+
+                val translationMap = mapOf(
+                    "clear sky" to "céu claro",
+                    "few clouds" to "algumas nuvens",
+                    "scattered clouds" to "parcialmente nublado",
+                    "broken clouds" to "predomina nublado",
+                    "overcast clouds" to "nublado",
+                    "shower rain" to "chuva fraca",
+                    "rain" to "chuva",
+                    "thunderstorm" to "tempestade",
+                    "snow" to "neve",
+                    "mist" to "misto",
+                    "haze" to "névoa",
+                    "dust" to "névoa seca"
+                )
+
+                val translatedDescription = translationMap[weatherDescription]
+
+                if (translatedDescription != null) {
+                    println("$translatedDescription")
+                } else {
+                    println(weatherDescription)
+                }
+
+
+
                 val address = jsonObj.getString("name")+", "+sys.getString("country")
 
 
@@ -168,7 +195,7 @@ class MainActivity : AppCompatActivity() {
 
                 findViewById<TextView>(R.id.address).text = address
                 findViewById<TextView>(R.id.updated_at).text = updateAtText
-                findViewById<TextView>(R.id.status).text = weatherDescription.replaceFirstChar { it.uppercaseChar() }
+                findViewById<TextView>(R.id.status).text = translatedDescription
                 findViewById<TextView>(R.id.temp).text = temperatureUnit
                 findViewById<TextView>(R.id.temp_min).text = temperatureMinUnit
                 findViewById<TextView>(R.id.temp_max).text = temperatureMaxUnit

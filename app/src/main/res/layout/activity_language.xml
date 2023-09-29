@@ -12,7 +12,7 @@
         android:id="@+id/textViewLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Language:"
+        android:text="@string/selecioneIdioma"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_gravity="center"/>
@@ -44,7 +44,7 @@
         android:id="@+id/buttonApply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Apply"
+        android:text="@string/aplicar"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"/>
 </LinearLayout>

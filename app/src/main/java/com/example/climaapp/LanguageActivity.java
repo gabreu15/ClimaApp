@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class LanguageActivity extends AppCompatActivity {
 
@@ -34,6 +35,7 @@ public class LanguageActivity extends AppCompatActivity {
 
                     // Restart the MainActivity
                     Intent intent = new Intent(LanguageActivity.this, MainActivity.class);
+                    Toast.makeText(LanguageActivity.this, "Aplicado com sucesso", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     finish(); // Finish the LanguageActivity
 

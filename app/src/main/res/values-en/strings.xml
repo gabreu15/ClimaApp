@@ -5,8 +5,8 @@
     <string name="atualizado">Updated at:</string>
     <string name="condicao_climatica">Weather Condition</string>
     <string name="temperatura">20°C</string>
-    <string name="minima">Minimum</string>
-    <string name="maxima">Maximum</string>
+    <string name="minima">Minimum:</string>
+    <string name="maxima">Maximum:</string>
 
     <string name="nascente">Sunrise</string>
     <string name="poente">Sunset</string>
@@ -18,4 +18,20 @@
     <string name="previsao_proximos_dias">Forecast for the next few days</string>
 
     <string name="erro">Something went wrong...</string>
+
+    <string name="selecioneIdioma">Select the language:</string>
+    <string name="aplicar">Apply</string>
+
+    <string name="clear_sky">Céu claro</string>
+    <string name="few_clouds">Algumas nuvens</string>
+    <string name="scattered_clouds">Parcialmente nublado</string>
+    <string name="broken_clouds">Predomina Nublado</string>
+    <string name="overcast_clouds">Nublado</string>
+    <string name="shower_rain">Chuva fraca</string>
+    <string name="rain">Chuva</string>
+    <string name="thunderstorm">Tempestade</string>
+    <string name="snow">Neve</string>
+    <string name="mist">Misto</string>
+    <string name="haze">Haze</string>
+    <string name="dust">Dust</string>
 </resources>

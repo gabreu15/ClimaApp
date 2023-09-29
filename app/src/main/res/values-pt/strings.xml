@@ -2,11 +2,11 @@
     <string name="app_name">ClimaApp</string>
 
     <string name="cidade">Cidade</string>
-    <string name="atualizado">Atualizado:</string>
+    <string name="atualizado">Atualizado em:</string>
     <string name="condicao_climatica">Condições climáticas</string>
     <string name="temperatura">20°C</string>
-    <string name="minima">Mínima</string>
-    <string name="maxima">Máxima</string>
+    <string name="minima">Mínima:</string>
+    <string name="maxima">Máxima:</string>
 
     <string name="nascente">Nascente</string>
     <string name="poente">Poente</string>
@@ -17,5 +17,22 @@
     <string name="mudar_idioma">Mudar Idioma</string>
     <string name="previsao_proximos_dias">Previsão para os próximos dias</string>
 
-    <string name="erro">Algo deu errado...</string>
+    <string name="erro">Algo deu errado.</string>
+
+    <string name="selecioneIdioma">Selecione o idioma</string>
+    <string name="aplicar">Aplicar</string>
+
+    <string name="clear_sky">Céu claro</string>
+    <string name="few_clouds">Algumas nuvens</string>
+    <string name="scattered_clouds">Parcialmente nublado</string>
+    <string name="broken_clouds">Predomina Nublado</string>
+    <string name="overcast_clouds">Nublado</string>
+    <string name="shower_rain">Chuva fraca</string>
+    <string name="rain">Chuva</string>
+    <string name="thunderstorm">Tempestade</string>
+    <string name="snow">Neve</string>
+    <string name="mist">Misto</string>
+    <string name="haze">Névoa</string>
+    <string name="dust">Névoa seca</string>
+
 </resources>
