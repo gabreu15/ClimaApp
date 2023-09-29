@@ -258,7 +258,7 @@ class MainActivity : AppCompatActivity()
                     val wind = windSpeeds.getDouble(i).toString() + " km/h"
 
                     // You can customize the layout of each card as needed
-                    items.add(Item(date, "Max Temp: $maxTemp\n","Min Temp: $minTemp\n","Wind Speed: $wind"))
+                    items.add(Item(date, "Max Temp: $maxTemp","Min Temp: $minTemp","Wind Speed: $wind"))
                 }
 
                 recyclerView.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
