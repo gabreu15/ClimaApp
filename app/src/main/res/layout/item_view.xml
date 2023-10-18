@@ -3,7 +3,7 @@
     android:layout_width="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
-    android:layout_margin="1dp"
+    android:layout_margin="4dp"
     app:cardElevation="6dp"
     app:cardCornerRadius="10dp"
     android:background="@android:color/transparent"
@@ -15,55 +15,55 @@
         android:background="@drawable/card_back">
 
         <TextView
-            android:id="@+id/idTextViewDate"
+            android:id="@+id/textViewDataEHora"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="2dp"
+            android:padding="4dp"
+            android:text="00:00"
+            android:textStyle="bold"
             android:textColor="@color/white"
             android:textAlignment="center"
             />
 
         <TextView
-            android:id="@+id/idTextViewMaxTemp"
+            android:id="@+id/textViewTemperatura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idTextViewDate"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp"
             android:gravity="center"
+            android:text="20°C"
             android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textSize="20sp"
+            android:layout_below="@id/textViewDataEHora"
+            android:textColor="@color/white"
+            />
+
+        <ImageView
+            android:id="@+id/imageViewIcone"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/textViewTemperatura"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:padding="4dp"
+            android:src="@drawable/not_available" />
 
         <TextView
-            android:id="@+id/idTextViewMinTemp"
+            android:id="@+id/textViewVento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/idTextViewMaxTemp"
+            android:layout_below="@id/imageViewIcone"
             android:layout_centerHorizontal="true"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
             android:gravity="center"
-            android:textAlignment="center"
-            android:textColor="@color/white" />
-
-
-        <TextView
-            android:id="@+id/idTextViewWind"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/idTextViewMinTemp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp"
-            android:gravity="center"
+            android:padding="3dp"
+            android:text="13 km/h"
             android:textAlignment="center"
             android:textColor="@color/white" />
 

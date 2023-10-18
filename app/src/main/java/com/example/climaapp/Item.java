@@ -2,47 +2,40 @@ package com.example.climaapp;
 
 public class Item {
 
-    String date;
-    String maxTemp;
-    String minTemp;
-    String wind;
+    String dataEHora;
+    String temperatura;
+    String vento;
+    String icone;
 
-    public Item(String date, String maxTemp, String minTemp, String wind) {
-        this.date = date;
-        this.maxTemp = maxTemp;
-        this.minTemp = minTemp;
-        this.wind = wind;
+    public Item(String dataEHora, String temperatura, String vento) {
+        this.dataEHora = dataEHora;
+        this.temperatura = temperatura;
+        this.vento = vento;
+
     }
 
-    public String getDate() {
-        return date;
+    public String getDataEHora() {
+        return dataEHora;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDataEHora(String dataEHora) {
+        this.dataEHora = dataEHora;
     }
 
-    public String getMaxTemp() {
-        return maxTemp;
+    public String getTemperatura() {
+        return temperatura;
     }
 
-    public void setMaxTemp(String maxTemp) {
-        this.maxTemp = maxTemp;
+    public void setTemperatura(String temperatura) {
+        this.temperatura = temperatura;
     }
 
-    public String getMinTemp() {
-        return minTemp;
+    public String getVento() {
+        return vento;
     }
 
-    public void setMinTemp(String minTemp) {
-        this.minTemp = minTemp;
+    public void setVento(String vento) {
+        this.vento = vento;
     }
 
-    public String getWind() {
-        return wind;
-    }
-
-    public void setWind(String wind) {
-        this.wind = wind;
-    }
 }

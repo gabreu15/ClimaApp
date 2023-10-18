@@ -204,12 +204,13 @@ class MainActivity : AppCompatActivity()
             findViewById<TextView>(R.id.errortext).visibility = View.GONE
         }
 
+
         override fun doInBackground(vararg p0: String?): String?
         {
             var response:String?
             try
             {
-                response = URL("https://api.open-meteo.com/v1/forecast?latitude=-25.4278&longitude=-49.2731&daily=temperature_2m_max,temperature_2m_min,windspeed_10m_max&timezone=America%2FSao_Paulo").readText(Charsets.UTF_8)
+                response = URL("https://api.openweathermap.org/data/2.5/forecast?lat=-25.50&lon=-49.29&units=metric&appid=8e920a9f459007cf7188c8f237275655").readText(Charsets.UTF_8)
             }
             catch (e: Exception)
             {
@@ -221,46 +222,37 @@ class MainActivity : AppCompatActivity()
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
             try {
-                val jsonObj = JSONObject(result)
-                val dates = jsonObj.getJSONObject("daily").getJSONArray("time")
-                val maxTemperatures = jsonObj.getJSONObject("daily").getJSONArray("temperature_2m_max")
-                val minTemperatures = jsonObj.getJSONObject("daily").getJSONArray("temperature_2m_min")
-                val windSpeeds = jsonObj.getJSONObject("daily").getJSONArray("windspeed_10m_max")
+                val jsonObj = JSONObject(result) // Grava os dados do Objeto JSON
+                val listForecastArray = jsonObj.getJSONArray("list")
 
-                val recyclerView: RecyclerView = findViewById(R.id.recyclerviewForecast)
                 val items = ArrayList<Item>()
 
-                val imageView = findViewById<ImageView>(R.id.weatherIcon)
-                val weatherIcons = mapOf(
-                        "01d" to R.drawable.d01,
-                "01n" to R.drawable.n01,
-                "02d" to R.drawable.d02,
-                "02n" to R.drawable.n02,
-                "03d" to R.drawable.d03,
-                "03n" to R.drawable.n03,
-                "04d" to R.drawable.d04,
-                "04n" to R.drawable.n04,
-                "09d" to R.drawable.d09,
-                "09n" to R.drawable.n09,
-                "10d" to R.drawable.d10,
-                "10n" to R.drawable.n10,
-                "11d" to R.drawable.d11,
-                "11n" to R.drawable.n11,
-                "50d" to R.drawable.d50,
-                "50n" to R.drawable.n50
-                )
+                for (i in 0 until listForecastArray.length()) {
+                    val listForecastItem = listForecastArray.getJSONObject(i)
+                    val listForecastMain = listForecastItem.getJSONObject("main")
+                    val listForecastWeather = listForecastItem.getJSONArray("weather").getJSONObject(0)
+                    val listForecastWind = listForecastItem.getJSONObject("wind")
+                    val listForecastDataEHora = listForecastItem.getString("dt_txt")
+                    val inputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()) // Formato atual do JSON
+                    val outputFormat = SimpleDateFormat("dd/MM" + " | " + "HH:mm", Locale.getDefault()) // Formato desejado
+                    val data = inputFormat.parse(listForecastDataEHora) // Parse a data e hora no formato atual
+                    val dataFormatada = outputFormat.format(data)
+                    val forecastMainTemperatura = listForecastMain.getString("temp")
+                    val forecastDescription = listForecastWeather.getString("description")
+                    val forecastWindSpeed = listForecastWind.getString("speed")
+                    val forecastWeatherIcon = listForecastWeather.getString("icon")
 
-                // Loop through the data and create items for each day
-                for (i in 0 until dates.length()) {
-                    val date = dates.getString(i)
-                    val maxTemp = maxTemperatures.getDouble(i).toString() + "°C"
-                    val minTemp = minTemperatures.getDouble(i).toString() + "°C"
-                    val wind = windSpeeds.getDouble(i).toString() + " km/h"
 
-                    // You can customize the layout of each card as needed
-                    items.add(Item(date, "Max Temp: $maxTemp","Min Temp: $minTemp","Wind Speed: $wind"))
+                    val dataEHora = dataFormatada
+                    val temperatura = forecastMainTemperatura.substring(0, 2) + "°C"
+                    val vento = forecastWindSpeed + " km/h"
+                    val item = Item(dataEHora, temperatura, vento)
+
+                    items.add(item)
                 }
 
+                // Atualize o RecyclerView com os dados obtidos
+                val recyclerView: RecyclerView = findViewById(R.id.recyclerviewForecast)
                 recyclerView.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
                 recyclerView.adapter = MyAdapter(applicationContext, items)
 

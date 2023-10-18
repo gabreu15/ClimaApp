@@ -27,10 +27,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.dateView.setText(items.get(position).getDate());
-        holder.maxTempView.setText(items.get(position).getMaxTemp());
-        holder.minTempView.setText(items.get(position).getMinTemp());
-        holder.windView.setText(items.get(position).getWind());
+        holder.dataEHoraView.setText(items.get(position).getDataEHora());
+        holder.temperaturaView.setText(items.get(position).getTemperatura());
+        holder.ventoView.setText(items.get(position).getVento());
     }
 
     @Override

@@ -10,12 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MyViewHolder extends RecyclerView.ViewHolder {
 
 
-    TextView dateView, maxTempView, minTempView, windView;
-    public MyViewHolder(@NonNull View itemView) {
+    TextView dataEHoraView, temperaturaView, ventoView; ImageView iconeView;
+    public MyViewHolder(@NonNull View itemView)
+    {
         super(itemView);
-        dateView = itemView.findViewById(R.id.idTextViewDate);
-        maxTempView = itemView.findViewById(R.id.idTextViewMaxTemp);
-        minTempView = itemView.findViewById(R.id.idTextViewMinTemp);
-        windView = itemView.findViewById(R.id.idTextViewWind);
+        dataEHoraView = itemView.findViewById(R.id.textViewDataEHora);
+        temperaturaView = itemView.findViewById(R.id.textViewTemperatura);
+        ventoView = itemView.findViewById(R.id.textViewVento);
+        iconeView = itemView.findViewById(R.id.imageViewIcone);
     }
+
 }
