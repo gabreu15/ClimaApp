@@ -246,7 +246,8 @@ class MainActivity : AppCompatActivity()
                     val dataEHora = dataFormatada
                     val temperatura = forecastMainTemperatura.substring(0, 2) + "°C"
                     val vento = forecastWindSpeed + " km/h"
-                    val item = Item(dataEHora, temperatura, vento)
+                    val icone = forecastWeatherIcon
+                    val item = Item(dataEHora, temperatura, vento, icone)
 
                     items.add(item)
                 }

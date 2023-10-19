@@ -7,11 +7,11 @@ public class Item {
     String vento;
     String icone;
 
-    public Item(String dataEHora, String temperatura, String vento) {
+    public Item(String dataEHora, String temperatura, String vento, String icone) {
         this.dataEHora = dataEHora;
         this.temperatura = temperatura;
         this.vento = vento;
-
+        this.icone = icone;
     }
 
     public String getDataEHora() {
@@ -38,4 +38,11 @@ public class Item {
         this.vento = vento;
     }
 
+    public String getIcone() {
+        return icone;
+    }
+
+    public void setIcone(String icone) {
+        this.icone = icone;
+    }
 }
