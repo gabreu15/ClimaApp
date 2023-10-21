@@ -22,6 +22,8 @@
     <string name="selecioneIdioma">Select the language:</string>
     <string name="aplicar">Apply</string>
 
+    <string name="aplicadoComSucesso">Langague selected: English</string>
+
 
     <string name="clear_sky">Open Sky</string>
     <string name="few_clouds">Few clouds</string>

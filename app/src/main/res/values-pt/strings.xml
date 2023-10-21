@@ -22,6 +22,8 @@
     <string name="selecioneIdioma">Selecione o idioma</string>
     <string name="aplicar">Aplicar</string>
 
+    <string name="aplicadoComSucesso">Idioma selecionado: Português</string>
+
     <string name="clear_sky">Céu claro</string>
     <string name="few_clouds">Algumas nuvens</string>
     <string name="scattered_clouds">Parcialmente nublado</string>

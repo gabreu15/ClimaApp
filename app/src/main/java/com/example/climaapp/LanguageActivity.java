@@ -23,6 +23,7 @@ public class LanguageActivity extends AppCompatActivity {
         languageRadioGroup = findViewById(R.id.languageRadioGroup);
         applyButton = findViewById(R.id.buttonApply);
 
+
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,7 +36,7 @@ public class LanguageActivity extends AppCompatActivity {
 
                     // Restart the MainActivity
                     Intent intent = new Intent(LanguageActivity.this, MainActivity.class);
-                    Toast.makeText(LanguageActivity.this, "Aplicado com sucesso", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LanguageActivity.this, R.string.aplicadoComSucesso, Toast.LENGTH_SHORT).show();
                     startActivity(intent);
                     finish(); // Finish the LanguageActivity
 

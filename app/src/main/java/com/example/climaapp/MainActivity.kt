@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity()
                     val translatedString = context.getString(translatedDescription) // Converte o recurso de string em CharSequence
                     findViewById<TextView>(R.id.status).text = translatedString // Define o texto no TextView
                 } else {
-                    findViewById<TextView>(R.id.status).text = weatherDescription // Use a descrição original se a tradução não for encontrada
+                    findViewById<TextView>(R.id.status).text = translatedDescription // Use a descrição original se a tradução não for encontrada
                 }
 
                 val address = jsonObj.getString("name")+", "+sys.getString("country")

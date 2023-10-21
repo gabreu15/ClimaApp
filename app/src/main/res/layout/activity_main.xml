@@ -445,7 +445,9 @@
                             android:layout_height="wrap_content"
                             android:onClick="startLanguageSelectionActivity"
                             android:text="@string/mudar_idioma"
-                            android:textSize="11sp" />
+                            android:textSize="11sp"
+                            android:background="#F44336"
+                            app:cornerRadius="0dp"/>
 
                     </LinearLayout>
                     <Space
