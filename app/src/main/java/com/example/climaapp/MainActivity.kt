@@ -112,29 +112,28 @@ class MainActivity : AppCompatActivity()
                 val weatherDescription = weather.getString("description")
 
                 val translationMap = mapOf(
-                    "clear sky" to "céu claro",
-                    "few clouds" to "algumas nuvens",
-                    "scattered clouds" to "parcialmente nublado",
-                    "broken clouds" to "predomina nublado",
-                    "overcast clouds" to "nublado",
-                    "shower rain" to "chuva fraca",
-                    "rain" to "chuva",
-                    "thunderstorm" to "tempestade",
-                    "snow" to "neve",
-                    "mist" to "misto",
-                    "haze" to "névoa",
-                    "dust" to "névoa seca"
+                    "clear sky" to R.string.clear_sky,
+                    "few clouds" to R.string.few_clouds,
+                    "scattered clouds" to R.string.scattered_clouds,
+                    "broken clouds" to R.string.broken_clouds,
+                    "overcast clouds" to R.string.overcast_clouds,
+                    "shower rain" to R.string.shower_rain,
+                    "rain" to R.string.rain,
+                    "thunderstorm" to R.string.thunderstorm,
+                    "snow" to R.string.snow,
+                    "mist" to R.string.mist,
+                    "haze" to R.string.haze,
+                    "dust" to R.string.dust
                 )
 
                 val translatedDescription = translationMap[weatherDescription]
 
-                if (translatedDescription != null)
-                {
-                    println("$translatedDescription")
-                }
-                else
-                {
-                    println(weatherDescription)
+                if (translatedDescription != null) {
+                    val context = applicationContext // ou use um contexto apropriado
+                    val translatedString = context.getString(translatedDescription) // Converte o recurso de string em CharSequence
+                    findViewById<TextView>(R.id.status).text = translatedString // Define o texto no TextView
+                } else {
+                    findViewById<TextView>(R.id.status).text = weatherDescription // Use a descrição original se a tradução não for encontrada
                 }
 
                 val address = jsonObj.getString("name")+", "+sys.getString("country")
@@ -172,7 +171,7 @@ class MainActivity : AppCompatActivity()
 
                 findViewById<TextView>(R.id.address).text = address
                 findViewById<TextView>(R.id.updated_at).text = updateAtText
-                findViewById<TextView>(R.id.status).text = translatedDescription
+                /*findViewById<TextView>(R.id.status).text = translatedDescription*/
                 findViewById<TextView>(R.id.temp).text = temperatureUnit
                 findViewById<TextView>(R.id.temp_min).text = temperatureMinUnit
                 findViewById<TextView>(R.id.temp_max).text = temperatureMaxUnit

@@ -40,14 +40,14 @@
 
         <ImageView
             android:id="@+id/imageViewIcone"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_below="@id/textViewTemperatura"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="0dp"
             android:padding="4dp"
             android:src="@drawable/not_available" />
 
@@ -58,7 +58,7 @@
             android:layout_below="@id/imageViewIcone"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="0dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
             android:gravity="center"
