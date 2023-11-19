@@ -93,7 +93,7 @@
 
                 </ImageView>
 
-                <!--
+
                 <TextView
                     android:id="@+id/status"
                     android:textSize="18sp"
@@ -103,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 </TextView>
-                -->
+
 
                 <TextView
                     android:id="@+id/temp"
@@ -201,7 +201,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dp"
-                        android:background="#3CF1EBF1"
+                        android:background="#8d9eba"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content">
 
@@ -209,7 +209,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:src="@drawable/sunrise"
-                            app:tint="@color/white">
+                            app:tint="@color/text_blue">
 
                         </ImageView>
                         <Space
@@ -220,16 +220,17 @@
                         <TextView
                             android:textSize="12sp"
                             android:text="@string/nascente"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_blue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
                         </TextView>
                         <TextView
                             android:id="@+id/sunrise"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:text="06:50"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_blue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -245,7 +246,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dp"
-                        android:background="#3CF1EBF1"
+                        android:background="#8d9eba"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content">
 
@@ -253,7 +254,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:src="@drawable/sunset"
-                            app:tint="@color/white">
+                            app:tint="@color/text_blue">
 
                         </ImageView>
                         <Space
@@ -264,16 +265,17 @@
                         <TextView
                             android:textSize="12sp"
                             android:text="@string/poente"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_blue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
                         </TextView>
                         <TextView
                             android:id="@+id/sunset"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:text="17:50"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_blue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -289,7 +291,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dp"
-                        android:background="#3CF1EBF1"
+                        android:background="#8d9eba"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content">
 
@@ -297,7 +299,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:src="@drawable/wind"
-                            app:tint="@color/white">
+                            app:tint="@color/text_blue">
 
                         </ImageView>
                         <Space
@@ -308,16 +310,17 @@
                         <TextView
                             android:textSize="12sp"
                             android:text="@string/vento"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_blue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
                         </TextView>
                         <TextView
                             android:id="@+id/wind"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:text="10 km/h"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_blue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -346,7 +349,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dp"
-                        android:background="#3CF1EBF1"
+                        android:background="#8d9eba"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content">
 
@@ -354,7 +357,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:src="@drawable/pressure"
-                            app:tint="@color/white">
+                            app:tint="@color/text_blue">
 
                         </ImageView>
                         <Space
@@ -365,16 +368,17 @@
                         <TextView
                             android:textSize="12sp"
                             android:text="@string/pressao"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_blue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
                         </TextView>
                         <TextView
                             android:id="@+id/pressure"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:text="500 mb"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_blue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -390,7 +394,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:padding="8dp"
-                        android:background="#3CF1EBF1"
+                        android:background="#8d9eba"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content">
 
@@ -398,7 +402,7 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:src="@drawable/humidity"
-                            app:tint="@color/white">
+                            app:tint="@color/text_blue">
 
                         </ImageView>
                         <Space
@@ -409,16 +413,17 @@
                         <TextView
                             android:textSize="12sp"
                             android:text="@string/umidade"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_blue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
                         </TextView>
                         <TextView
                             android:id="@+id/humidity"
-                            android:textSize="14sp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
                             android:text="80%"
-                            android:textColor="@color/white"
+                            android:textColor="@color/text_blue"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
 
@@ -434,7 +439,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="#3CF1EBF1"
+                        android:background="#8d9eba"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:padding="4dp">
@@ -446,8 +451,8 @@
                             android:onClick="startLanguageSelectionActivity"
                             android:text="@string/mudar_idioma"
                             android:textSize="11sp"
-                            android:background="#F44336"
-                            app:cornerRadius="0dp"/>
+                            android:backgroundTint="@color/blue_dark"
+                            app:cornerRadius="20dp"/>
 
                     </LinearLayout>
                     <Space

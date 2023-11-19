@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity()
                 val sunsetTimestamp = sunset - (3 * 3600)
                 val windSpeed = wind.getString("speed")+" km/h"
                 val weatherDescription = weather.getString("description")
-                /*
+
 
                 val translationMap = mapOf(
                     "clear sky" to R.string.clear_sky,
@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity()
                     findViewById<TextView>(R.id.status).text = translatedDescription // Use a descrição original se a tradução não for encontrada
                 }
 
-                 */
+
 
                 val address = jsonObj.getString("name")+", "+sys.getString("country")
                 val weatherIcon = weather.getString("icon")
