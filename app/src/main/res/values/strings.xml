@@ -5,8 +5,7 @@
     <string name="atualizado">Updated at:</string>
     <string name="condicao_climatica">Weather Condition</string>
     <string name="temperatura">20°C</string>
-    <string name="minima">Minimum:</string>
-    <string name="maxima">Maximum:</string>
+    <string name="sensacao_termica">Feels like:</string>
 
     <string name="nascente">Sunrise</string>
     <string name="poente">Sunset</string>

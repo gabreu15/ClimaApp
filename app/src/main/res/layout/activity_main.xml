@@ -124,8 +124,8 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:id="@+id/minima"
-                        android:text="@string/minima"
+                        android:id="@+id/sensacao_termica"
+                        android:text="@string/sensacao_termica"
                         android:textColor="@color/white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
@@ -138,7 +138,7 @@
                     </Space>
 
                     <TextView
-                        android:id="@+id/temp_min"
+                        android:id="@+id/feelsLike"
                         android:textStyle="bold"
                         android:text="10°"
                         android:textColor="@color/white"
@@ -147,32 +147,12 @@
 
                     </TextView>
 
-                    <Space
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content">
-                    </Space>
 
-                    <TextView
-                        android:id="@+id/maxima"
-                        android:text="@string/maxima"
-                        android:textColor="@color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
 
                     <Space
                         android:layout_width="5dp"
                         android:layout_height="wrap_content">
                     </Space>
-
-                    <TextView
-                        android:id="@+id/temp_max"
-                        android:text="30º"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                    </TextView>
 
                 </LinearLayout>
 

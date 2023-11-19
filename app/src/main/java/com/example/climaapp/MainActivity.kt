@@ -98,10 +98,8 @@ class MainActivity : AppCompatActivity()
                 val updateAtText = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ENGLISH).format(Date(updatedAtTimestamp*1000))
                 val temp = main.getString("temp")
                 val temperatureUnit = temp.substring(0, 2)+"°C"
-                val tempMin = main.getString("temp_min")
-                val temperatureMinUnit = tempMin.substring(0, 2)+"°C"
-                val tempMax = main.getString("temp_max")
-                val temperatureMaxUnit = tempMax.substring(0, 2)+"°C"
+                val feelsLike = main.getString("feels_like")
+                val sensacaoTermicaUnit = feelsLike.substring(0, 2)+"°C"
                 val pressure = main.getString("pressure")+" mb"
                 val humidity = main.getString("humidity")+"%"
                 val sunrise = sys.getLong("sunrise")
@@ -176,8 +174,7 @@ class MainActivity : AppCompatActivity()
                 findViewById<TextView>(R.id.updated_at).text = updateAtText
                 /*findViewById<TextView>(R.id.status).text = translatedDescription*/
                 findViewById<TextView>(R.id.temp).text = temperatureUnit
-                findViewById<TextView>(R.id.temp_min).text = temperatureMinUnit
-                findViewById<TextView>(R.id.temp_max).text = temperatureMaxUnit
+                findViewById<TextView>(R.id.feelsLike).text = sensacaoTermicaUnit
                 findViewById<TextView>(R.id.sunrise).text = SimpleDateFormat("HH:mm", Locale.ENGLISH).format(Date(sunriseTimestamp * 1000))
                 findViewById<TextView>(R.id.sunset).text = SimpleDateFormat("HH:mm", Locale.ENGLISH).format(Date(sunsetTimestamp * 1000))
                 findViewById<TextView>(R.id.wind).text = windSpeed
